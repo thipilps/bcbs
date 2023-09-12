@@ -1,0 +1,48 @@
+{
+  "objectInfo" : {
+    "id" : "1pPBQCfYWFGbH8R86XKfwX",
+    "name" : "Taskflow_License",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "XRZXDyvs7xvk0qZ-gt-15368389-2023-09-12T18:04:58.804Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2023-09-12T21:34:00.107Z",
+  "objectRefs" : [ {
+    "id" : "9zpQ1Y1DmS4bLmiT3XE3c4",
+    "name" : "mt_IDMC_License",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01CMJI0Z00000000000T"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/BCBS"
+  } ]
+}

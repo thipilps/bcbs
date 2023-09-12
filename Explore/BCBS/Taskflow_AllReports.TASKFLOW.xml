@@ -1,0 +1,422 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>1XpqVVVVVVVVVVV-gt-14088926-2023-09-12T16:42:20.841Z::tf.xml</types1:EntryId>
+      <types1:Name>Taskflow_AllReports</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-09-12T16:42:21Z</types1:CreationDate>
+      <types1:ModifiedBy>tnsilva@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2023-09-12T18:16:40Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>tnsilva@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2023-09-12T21:23:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.Taskflow_AllReports/Taskflow_AllReports.tf.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="Taskflow_AllReports"
+                   name="Taskflow_AllReports"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="Login" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="Taskflow_IPU_Usage" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="Taskflow_ActivityLog" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="Taskflow_CommitHistory" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="Taskflow_Connection" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="Taskflow_Groups" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="Taskflow_License" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="Taskflow_Roles" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="Taskflow_Users" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lmgjhy6t" targetId="lmgjhy7g"/>
+               </start>
+               <eventContainer id="lmgjhy7g">
+                  <subflow id="lmgjhy6s">
+                     <title>Login</title>
+                     <subflowGUID>5RlEWISSL2KbsAqQDfMFUH</subflowGUID>
+                     <subflowPath>Taskflow_Login</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input/>
+                     <outputDef/>
+                  </subflow>
+                  <flow id="lmgjhy7i">
+                     <container id="lmgjhy8a" type="parallel">
+                        <title>Parallel Paths</title>
+                        <flow id="lmgjhy8f">
+                           <eventContainer id="lmglukpl">
+                              <subflow id="lmgjhyb5">
+                                 <title>Taskflow_ActivityLog</title>
+                                 <subflowGUID>11uID35pqjqiy1OdsEx78Q</subflowGUID>
+                                 <subflowPath>Taskflow_ActivityLog</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input/>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="lmglukpn">
+                                 <link id="lmglukpo" targetId="lmglukpl" type="containerLink"/>
+                              </flow>
+                              <flow id="lmglukpq">
+                                 <throw id="lmglukr3">
+                                    <title>Throw Activity Log</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faultActivityLog[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faultActivityLog[1]/detail}</parameter>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lmglukpm" targetId="lmglukpn" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultActivityLog" id="lmglukpf" interrupting="true">
+                                    <link id="lmglukpp" targetId="lmglukpq" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lmgjhy8g" targetId="lmgjhy8a" type="containerLink"/>
+                        </flow>
+                        <flow id="lmgm3860">
+                           <eventContainer id="lmgm386q">
+                              <subflow id="lmgm386a">
+                                 <title>Taskflow_CommitHistory</title>
+                                 <subflowGUID>2XdKEI3b8HPdz5L1tagQee</subflowGUID>
+                                 <subflowPath>Taskflow_CommitHistory</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input/>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="lmgm386s">
+                                 <link id="lmgm386t" targetId="lmgm386q" type="containerLink"/>
+                              </flow>
+                              <flow id="lmgm386v">
+                                 <throw id="lmgm387v">
+                                    <title>Throw Commit History</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faultCommitHistory[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faultCommitHistory[1]/detail}</parameter>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lmgm386r" targetId="lmgm386s" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultCommitHistory" id="lmgm386c" interrupting="true">
+                                    <link id="lmgm386u" targetId="lmgm386v" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lmgm3861" targetId="lmgjhy8a" type="containerLink"/>
+                        </flow>
+                        <flow id="lmgm8td1">
+                           <eventContainer id="lmgm8tel">
+                              <subflow id="lmgm8te1">
+                                 <title>Taskflow_Connection</title>
+                                 <subflowGUID>10S732czZIadCjVxGa9VIs</subflowGUID>
+                                 <subflowPath>Taskflow_Connection</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input/>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="lmgm8ten">
+                                 <link id="lmgm8teo" targetId="lmgm8tel" type="containerLink"/>
+                              </flow>
+                              <flow id="lmgm8teq">
+                                 <throw id="lmgm8tfy">
+                                    <title>Throw Connection</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faulConnection[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faulConnection[1]/detail}</parameter>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lmgm8tem" targetId="lmgm8ten" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faulConnection" id="lmgm8te3" interrupting="true">
+                                    <link id="lmgm8tep" targetId="lmgm8teq" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lmgm8td2" targetId="lmgjhy8a" type="containerLink"/>
+                        </flow>
+                        <flow id="lmgme65e">
+                           <eventContainer id="lmgme670">
+                              <subflow id="lmgme66c">
+                                 <title>Taskflow_Groups</title>
+                                 <subflowGUID>7Gn78w0nVgLcrxPNLwkycE</subflowGUID>
+                                 <subflowPath>Taskflow_Groups</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input/>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="lmgme672">
+                                 <link id="lmgme673" targetId="lmgme670" type="containerLink"/>
+                              </flow>
+                              <flow id="lmgme675">
+                                 <throw id="lmgme68x">
+                                    <title>Throw Groups</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faultGroups[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faultGroups[1]/detail}</parameter>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lmgme671" targetId="lmgme672" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultGroups" id="lmgme66e" interrupting="true">
+                                    <link id="lmgme674" targetId="lmgme675" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lmgme65f" targetId="lmgjhy8a" type="containerLink"/>
+                        </flow>
+                        <flow id="lmgjhy8c">
+                           <eventContainer id="lmgjhy91">
+                              <subflow id="lmgjhy8p">
+                                 <title>Taskflow_IPU_Usage</title>
+                                 <subflowGUID>0u9A8pthVZ1gstoBARUrwi</subflowGUID>
+                                 <subflowPath>Taskflow_IPUUsage</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input/>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="lmgjhy93">
+                                 <link id="lmgjhy94" targetId="lmgjhy91" type="containerLink"/>
+                              </flow>
+                              <flow id="lmgjhy96">
+                                 <throw id="lmgjhy9u">
+                                    <title>Throw IPU Usage</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faultIPU_Usage[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faultIPU_Usage[1]/detail}</parameter>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lmgjhy92" targetId="lmgjhy93" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultIPUUsage" id="lmgjhy8r" interrupting="true">
+                                    <link id="lmgjhy95" targetId="lmgjhy96" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lmgjhy8d" targetId="lmgjhy8a" type="containerLink"/>
+                        </flow>
+                        <flow id="lmgmi3je">
+                           <eventContainer id="lmgmi3km">
+                              <subflow id="lmgmi3ju">
+                                 <title>Taskflow_License</title>
+                                 <subflowGUID>1pPBQCfYWFGbH8R86XKfwX</subflowGUID>
+                                 <subflowPath>Taskflow_License</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input/>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="lmgmi3ko">
+                                 <link id="lmgmi3kp" targetId="lmgmi3km" type="containerLink"/>
+                              </flow>
+                              <flow id="lmgmi3kr">
+                                 <throw id="lmgmi3mf">
+                                    <title>Throw License</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faultLicense[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faultLicense[1]/detail}</parameter>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lmgmi3kn" targetId="lmgmi3ko" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultLicense" id="lmgmi3jw" interrupting="true">
+                                    <link id="lmgmi3kq" targetId="lmgmi3kr" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lmgmi3jf" targetId="lmgjhy8a" type="containerLink"/>
+                        </flow>
+                        <flow id="lmgmnnyi">
+                           <eventContainer id="lmgmnnzw">
+                              <subflow id="lmgmnnz0">
+                                 <title>Taskflow_Roles</title>
+                                 <subflowGUID>leLHYWEM2OMc3eaOfh5UQd</subflowGUID>
+                                 <subflowPath>Taskflow_Roles</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input/>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="lmgmnnzy">
+                                 <link id="lmgmnnzz" targetId="lmgmnnzw" type="containerLink"/>
+                              </flow>
+                              <flow id="lmgmno01">
+                                 <throw id="lmgmno1x">
+                                    <title>Throw Roles</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faultRoles[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faultRoles[1]/detail}</parameter>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lmgmnnzx" targetId="lmgmnnzy" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultRoles" id="lmgmnnz2" interrupting="true">
+                                    <link id="lmgmno00" targetId="lmgmno01" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lmgmnnyj" targetId="lmgjhy8a" type="containerLink"/>
+                        </flow>
+                        <flow id="lmgmux65">
+                           <eventContainer id="lmgmux7p">
+                              <subflow id="lmgmux6p">
+                                 <title>Taskflow_Users</title>
+                                 <subflowGUID>5vB6A67dalNgvTK4YtWEWB</subflowGUID>
+                                 <subflowPath>Taskflow_Users</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input/>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="lmgmux7r">
+                                 <link id="lmgmux7s" targetId="lmgmux7p" type="containerLink"/>
+                              </flow>
+                              <flow id="lmgmux7u">
+                                 <throw id="lmgmux9y">
+                                    <title>Throw Users</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faulUsers[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faulUsers[1]/detail}</parameter>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lmgmux7q" targetId="lmgmux7r" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faulUsers" id="lmgmux6r" interrupting="true">
+                                    <link id="lmgmux7t" targetId="lmgmux7u" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lmgmux66" targetId="lmgjhy8a" type="containerLink"/>
+                        </flow>
+                        <link id="lmgjhy8e" targetId="lmgjhy8f" type="containerLink"/>
+                        <link id="lmgm385z" targetId="lmgm3860" type="containerLink"/>
+                        <link id="lmgm8td0" targetId="lmgm8td1" type="containerLink"/>
+                        <link id="lmgme65d" targetId="lmgme65e" type="containerLink"/>
+                        <link id="lmgjhy8b" targetId="lmgjhy8c" type="containerLink"/>
+                        <link id="lmgmi3jd" targetId="lmgmi3je" type="containerLink"/>
+                        <link id="lmgmnnyh" targetId="lmgmnnyi" type="containerLink"/>
+                        <link id="lmgmux64" targetId="lmgmux65" type="containerLink"/>
+                     </container>
+                     <link id="lmgjhy7j" targetId="lmgjhy7g" type="containerLink"/>
+                  </flow>
+                  <flow id="lmgjhy7l">
+                     <throw id="lmgjhy7t">
+                        <title>Throw Login</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">{$output.FaultLogin[1]/code}</parameter>
+                           <parameter name="detail" source="constant" updatable="true">{$output.FaultLogin[1]/detail}</parameter>
+                           <parameter name="reason" source="constant" updatable="true"/>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lmgjhy7h" targetId="lmgjhy7i" type="containerLink"/>
+                  <link id="lmgjhy6u" targetId="c"/>
+                  <events>
+                     <catch faultField="faultLogin" id="lmgjhy6w" interrupting="true">
+                        <link id="lmgjhy7k" targetId="lmgjhy7l" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="InternalInfaSubTaskflowField"
+                              isByCopy="true"
+                              name="InternalInfaSubTaskflowField">
+                  <description>This process object represents a subtaskflow type reference field.</description>
+                  <tags/>
+                  <detail/>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>76UCg7KK8SyltMehJk7b6r</types1:GUID>
+      <types1:DisplayName>Taskflow_AllReports</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-12T21:33:59.579Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

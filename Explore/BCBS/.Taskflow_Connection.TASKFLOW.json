@@ -1,0 +1,48 @@
+{
+  "objectInfo" : {
+    "id" : "10S732czZIadCjVxGa9VIs",
+    "name" : "Taskflow_Connection",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "9JiTk08jIw8jIw8-gt-14153945-2023-09-12T17:57:20.972Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2023-09-12T21:34:00.110Z",
+  "objectRefs" : [ {
+    "id" : "auBx95gnGSGbNZK9lfHI2s",
+    "name" : "mt_IDMC_Connection",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01CMJI0Z00000000000Q"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/BCBS"
+  } ]
+}

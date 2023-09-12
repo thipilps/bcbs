@@ -1,0 +1,157 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>eGbciZBpDUQbgdw-gt-15287688-2023-09-12T18:01:37.072Z::tf.xml</types1:EntryId>
+      <types1:Name>Taskflow_Groups</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-09-12T18:01:37Z</types1:CreationDate>
+      <types1:ModifiedBy>tnsilva@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2023-09-12T18:02:03Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>tnsilva@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2023-09-12T21:23:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.Taskflow_Groups/Taskflow_Groups.tf.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="Taskflow_Groups"
+                   name="Taskflow_Groups"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="Groups" type="reference">
+                  <options>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                     <option name="referenceTo">$po:mt-IDMC-Groups</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lmgmb5j2" targetId="lmgmb5jr"/>
+               </start>
+               <eventContainer id="lmgmb5jr">
+                  <service id="lmgmb5j1">
+                     <title>Groups</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_IDMC_Groups</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">ivwjo2Z78oejsUxG71mtMv</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-IDMC-Groups">temp.Groups</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Groups/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Groups/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Groups/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Groups/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Groups/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Groups/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Groups/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Groups/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Groups/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Groups/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Groups/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Groups/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Groups/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Groups/output/FirstErrorCode">First Error Code</operation>
+                        <operation source="field" to="temp.Groups/inout/Environment">Environment</operation>
+                     </serviceOutput>
+                  </service>
+                  <flow id="lmgmb5kd">
+                     <link id="lmgmb5ke" targetId="lmgmb5jr" type="containerLink"/>
+                  </flow>
+                  <flow id="lmgmb5kg">
+                     <throw id="lmgmb5le">
+                        <title>Throw Groups</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">{$temp.Groups[1]/fault[1]/code}</parameter>
+                           <parameter name="detail" source="constant" updatable="true">{$temp.Groups[1]/fault[1]/detail[1]/errOutputDetail[1]/Error_Message}</parameter>
+                           <parameter name="reason" source="constant" updatable="true"/>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lmgmb5kc" targetId="lmgmb5kd" type="containerLink"/>
+                  <link id="lmgmb5j3" targetId="c"/>
+                  <events>
+                     <catch faultField="temp.Groups/fault"
+                            id="lmgmb5jp"
+                            interrupting="true"
+                            name="error">
+                        <link id="lmgmb5kf" targetId="lmgmb5kg" type="containerLink"/>
+                     </catch>
+                     <catch faultField="temp.Groups/fault"
+                            id="lmgmb5jq"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-IDMC-Groups"
+                              isByCopy="true"
+                              name="mt-IDMC-Groups">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="InOut Parameters"
+                            name="inout"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Max Wait (Seconds)"
+                            name="Max_Wait"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>7Gn78w0nVgLcrxPNLwkycE</types1:GUID>
+      <types1:DisplayName>Taskflow_Groups</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-12T21:33:59.236Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

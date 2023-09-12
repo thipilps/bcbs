@@ -1,0 +1,156 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>fZfYEWNTrKkQIW3-gt-15294621-2023-09-12T18:15:04.09Z::tf.xml</types1:EntryId>
+      <types1:Name>Taskflow_Users</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-09-12T18:15:04Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>tnsilva@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2023-09-12T21:23:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.Taskflow_Users/Taskflow_Users.tf.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="Taskflow_Users"
+                   name="Taskflow_Users"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="Users" type="reference">
+                  <options>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                     <option name="referenceTo">$po:mt-IDMC-Users</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lmgms0sx" targetId="lmgms0tm"/>
+               </start>
+               <eventContainer id="lmgms0tm">
+                  <service id="lmgms0sw">
+                     <title>Users</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_IDMC_Users</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">0gBatNJY43QgEdQarecqAE</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-IDMC-Users">temp.Users</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Users/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Users/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Users/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Users/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Users/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Users/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Users/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Users/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Users/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Users/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Users/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Users/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Users/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Users/output/FirstErrorCode">First Error Code</operation>
+                        <operation source="field" to="temp.Users/inout/Environment">Environment</operation>
+                     </serviceOutput>
+                  </service>
+                  <flow id="lmgms0us">
+                     <link id="lmgms0ut" targetId="lmgms0tm" type="containerLink"/>
+                  </flow>
+                  <flow id="lmgms0uv">
+                     <throw id="lmgms0v5">
+                        <title>Throw Users</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">{$temp.Users[1]/fault[1]/code}</parameter>
+                           <parameter name="detail" source="constant" updatable="true">{$temp.Users[1]/fault[1]/detail[1]/errOutputDetail[1]/Error_Message}</parameter>
+                           <parameter name="reason" source="constant" updatable="true"/>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lmgms0ur" targetId="lmgms0us" type="containerLink"/>
+                  <link id="lmgms0sy" targetId="c"/>
+                  <events>
+                     <catch faultField="temp.Users/fault"
+                            id="lmgms0tk"
+                            interrupting="true"
+                            name="error">
+                        <link id="lmgms0uu" targetId="lmgms0uv" type="containerLink"/>
+                     </catch>
+                     <catch faultField="temp.Users/fault"
+                            id="lmgms0tl"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-IDMC-Users"
+                              isByCopy="true"
+                              name="mt-IDMC-Users">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="InOut Parameters"
+                            name="inout"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Max Wait (Seconds)"
+                            name="Max_Wait"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>5vB6A67dalNgvTK4YtWEWB</types1:GUID>
+      <types1:DisplayName>Taskflow_Users</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-12T21:33:59.52Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

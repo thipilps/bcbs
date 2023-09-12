@@ -1,15 +1,15 @@
 {
   "objectInfo" : {
-    "id" : "5oNeuNc1IAfjvzJhojwiwX",
-    "name" : "mt_IDMC_Export_Metering_Data",
-    "type" : "MTT",
+    "id" : "2wJ3wPyrzomdyzed04OnQB",
+    "name" : "m_IDMC_ExportMeteringData",
+    "type" : "DTEMPLATE",
     "metadata" : {
       "modelVersion" : {
         "major" : 0,
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "01CMJI0Z00000000000M"
+        "repoHandle" : "01CMJI17000000000017"
       },
       "contextAttributes" : [ {
         "name" : "id",
@@ -23,28 +23,8 @@
     }
   },
   "dataFileExtension" : "zip",
-  "updateTime" : "2023-09-12T15:57:56.225Z",
+  "updateTime" : "2023-09-12T21:34:00.106Z",
   "objectRefs" : [ {
-    "id" : "0kmm4ZfPTVXbfO81Zsyd0k",
-    "name" : "IDMC_Oracle",
-    "type" : "Connection",
-    "metadata" : {
-      "modelVersion" : {
-        "major" : 0,
-        "minor" : 0
-      },
-      "repoInfo" : {
-        "repoHandle" : "01CMJI0B00000000000I"
-      },
-      "contextAttributes" : null,
-      "additionalInfo" : {
-        "description" : null,
-        "contentType" : "JSON",
-        "documentState" : "COMPLETE"
-      }
-    },
-    "path" : "/SYS"
-  }, {
     "id" : "7UlBygQZ8oJekKMhYOmE89",
     "name" : "BS_restAPI",
     "type" : "BSERVICE",
@@ -95,8 +75,8 @@
     },
     "path" : "/Explore/BCBS"
   }, {
-    "id" : "4C2xY4mxEKDjoTOzm4HEqi",
-    "name" : "IDMC_RestAPI",
+    "id" : "0kmm4ZfPTVXbfO81Zsyd0k",
+    "name" : "IDMC_Oracle",
     "type" : "Connection",
     "metadata" : {
       "modelVersion" : {
@@ -104,7 +84,7 @@
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "01CMJI0B00000000000G"
+        "repoHandle" : "01CMJI0B00000000000I"
       },
       "contextAttributes" : null,
       "additionalInfo" : {
@@ -114,48 +94,5 @@
       }
     },
     "path" : "/SYS"
-  }, {
-    "id" : "7r6471UG3g8hMoBWLSWwmq",
-    "name" : "USWPF3MAK9W-AAD",
-    "type" : "AgentGroup",
-    "metadata" : {
-      "modelVersion" : {
-        "major" : 0,
-        "minor" : 0
-      },
-      "repoInfo" : {
-        "repoHandle" : "01CMJI25000000000004"
-      },
-      "contextAttributes" : null,
-      "additionalInfo" : {
-        "description" : null,
-        "contentType" : "JSON",
-        "documentState" : "VALID"
-      }
-    },
-    "path" : "/SYS"
-  }, {
-    "id" : "2wJ3wPyrzomdyzed04OnQB",
-    "name" : "m_IDMC_Export_Metering_Data",
-    "type" : "DTEMPLATE",
-    "metadata" : {
-      "modelVersion" : {
-        "major" : 0,
-        "minor" : 0
-      },
-      "repoInfo" : {
-        "repoHandle" : "01CMJI17000000000017"
-      },
-      "contextAttributes" : [ {
-        "name" : "id",
-        "value" : "@1"
-      } ],
-      "additionalInfo" : {
-        "description" : "",
-        "contentType" : "JSON",
-        "documentState" : "VALID"
-      }
-    },
-    "path" : "/Explore/BCBS"
   } ]
 }
