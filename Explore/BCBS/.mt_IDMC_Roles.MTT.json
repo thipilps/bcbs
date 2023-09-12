@@ -1,0 +1,161 @@
+{
+  "objectInfo" : {
+    "id" : "2ATfzdx8Ke9e6xFn77Rsss",
+    "name" : "mt_IDMC_Roles",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01CMJI0Z00000000000U"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "updateTime" : "2023-09-12T15:57:56.229Z",
+  "objectRefs" : [ {
+    "id" : "0kmm4ZfPTVXbfO81Zsyd0k",
+    "name" : "IDMC_Oracle",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01CMJI0B00000000000I"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "7UlBygQZ8oJekKMhYOmE89",
+    "name" : "BS_restAPI",
+    "type" : "BSERVICE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01CMJI2700000000000J"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      }, {
+        "name" : "01CMJI28000000000014",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@commitHistory"
+      }, {
+        "name" : "01CMJI28000000000011",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@IPUUsage"
+      }, {
+        "name" : "01CMJI2800000000000V",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@activityLog"
+      }, {
+        "name" : "01CMJI2800000000000W",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@users"
+      }, {
+        "name" : "01CMJI28000000000015",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@commitDetails"
+      }, {
+        "name" : "01CMJI2800000000000U",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@connection"
+      }, {
+        "name" : "01CMJI2800000000000X",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@groups"
+      }, {
+        "name" : "01CMJI2800000000000Y",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@roles"
+      }, {
+        "name" : "01CMJI28000000000010",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@license"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/BCBS"
+  }, {
+    "id" : "4C2xY4mxEKDjoTOzm4HEqi",
+    "name" : "IDMC_RestAPI",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01CMJI0B00000000000G"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "hRFNKxgvrsehyqSxViFuYL",
+    "name" : "m_IDMC_Roles",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01CMJI17000000000015"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/BCBS"
+  }, {
+    "id" : "7r6471UG3g8hMoBWLSWwmq",
+    "name" : "USWPF3MAK9W-AAD",
+    "type" : "AgentGroup",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01CMJI25000000000004"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/SYS"
+  } ]
+}

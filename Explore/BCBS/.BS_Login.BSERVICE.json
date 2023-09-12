@@ -1,0 +1,54 @@
+{
+  "objectInfo" : {
+    "id" : "6lgaOTTzJINdiqnDzDdWwS",
+    "name" : "BS_Login",
+    "type" : "BSERVICE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01CMJI2700000000000K"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      }, {
+        "name" : "01CMJI28000000000013",
+        "value" : "6lgaOTTzJINdiqnDzDdWwS@logout"
+      }, {
+        "name" : "01CMJI28000000000012",
+        "value" : "6lgaOTTzJINdiqnDzDdWwS@login"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "updateTime" : "2023-09-12T15:57:56.223Z",
+  "objectRefs" : [ {
+    "id" : "8ULqz5zBTP8e1st9RBYjMa",
+    "name" : "IDMC_Login",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "01CMJI0B000000000002"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  } ]
+}

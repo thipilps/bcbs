@@ -1,0 +1,345 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>9It0i98C1LOwD0w-gt-11940599-2023-09-08T01:57:34.977Z::tf.xml</types1:EntryId>
+      <types1:Name>Taskflow_IPU_Usage</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-09-08T01:57:35Z</types1:CreationDate>
+      <types1:ModifiedBy>tnsilva@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2023-09-11T22:04:13Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="Taskflow_IPU_Usage"
+                   name="Taskflow_IPU_Usage"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="Login" type="reference">
+                  <options>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                     <option name="referenceTo">$po:mt-IDMC-Login</option>
+                  </options>
+               </field>
+               <field description="" name="Export Metering Data" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:mt-IDMC-Export-Metering-Data</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="Download Report" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:INFA-commandTask</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lm9y4ytb" targetId="lm9y4yty"/>
+               </start>
+               <eventContainer id="lm9y4yty">
+                  <service id="lm9y4yta">
+                     <title>Login</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_IDMC_Login</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">92n6lE2R4eObSrRGs2hcss</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-IICS-Login">temp.Login</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Login/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Login/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Login/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Login/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Login/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Login/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Login/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Login/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Login/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Login/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Login/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Login/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Login/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Login/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <flow id="lmb9rovp">
+                     <eventContainer id="lmb9rown">
+                        <service id="lmb9rovx">
+                           <title>Export Metering Data</title>
+                           <serviceName>ICSExecuteDataTask</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                              <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                              <parameter name="Task Name" source="constant" updatable="true">mt_IDMC_Export_Metering_Data</parameter>
+                              <parameter name="GUID" source="constant" updatable="true">5oNeuNc1IAfjvzJhojwiwX</parameter>
+                              <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                              <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                              <parameter name="taskField" source="nested">
+                                 <operation source="field" to="mt-IICS-Export-Metering-Data">temp.Export Metering Data</operation>
+                              </parameter>
+                           </serviceInput>
+                           <serviceOutput>
+                              <operation source="field" to="temp.Export Metering Data/output/Object_Name">Object Name</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/Run_Id">Run Id</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/Log_Id">Log Id</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/Task_Id">Task Id</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/Task_Status">Task Status</operation>
+                              <operation source="field"
+                                         to="temp.Export Metering Data/output/Success_Source_Rows">Success Source Rows</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/Failed_Source_Rows">Failed Source Rows</operation>
+                              <operation source="field"
+                                         to="temp.Export Metering Data/output/Success_Target_Rows">Success Target Rows</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/Failed_Target_Rows">Failed Target Rows</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/Start_Time">Start Time</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/End_Time">End Time</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/Error_Message">Error Message</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/TotalTransErrors">Total Transformation Errors</operation>
+                              <operation source="field" to="temp.Export Metering Data/output/FirstErrorCode">First Error Code</operation>
+                              <operation source="field" to="temp.Export Metering Data/inout/icSessionId">icSessionId</operation>
+                              <operation source="field" to="temp.Export Metering Data/inout/jobId">jobId</operation>
+                              <operation source="field" to="temp.Export Metering Data/inout/Environment">Environment</operation>
+                              <operation source="field" to="temp.Export Metering Data/inout/StartDate">StartDate</operation>
+                              <operation source="field" to="temp.Export Metering Data/inout/EndDate">EndDate</operation>
+                              <operation source="field" to="temp.Export Metering Data/inout/orgId">orgId</operation>
+                           </serviceOutput>
+                        </service>
+                        <flow id="lmb9royv">
+                           <eventContainer id="lmb9rozr">
+                              <service id="lmb9roz9">
+                                 <title>Download Report</title>
+                                 <serviceName>ICSExecuteCommandTask</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="Task Name" source="constant">Download Report</parameter>
+                                    <parameter name="Wait for Task to Complete" source="constant">true</parameter>
+                                    <parameter name="Runtime Environment" source="constant">01CMJI25000000000004:USWPF3MAK9W-AAD</parameter>
+                                    <parameter name="Max Wait" source="constant">86400</parameter>
+                                    <parameter name="Script Name" source="constant"/>
+                                    <parameter name="Input Arguments" source="constant"/>
+                                    <parameter name="Work Directory" source="constant"/>
+                                    <parameter name="RuntimeEnvGUID" source="constant">7r6471UG3g8hMoBWLSWwmq</parameter>
+                                    <parameter name="FailTaskIfAnyScriptFails" source="constant">true</parameter>
+                                    <parameter name="taskField" source="nested">
+                                       <operation source="field" to="INFA-commandTask">temp.Command Task 1</operation>
+                                       <operation source="constant" to="INFA-commandTask/input[1]/script-1/name">Script1</operation>
+                                       <operation source="constant" to="INFA-commandTask/input[1]/script-1/scriptName">C:/IICS/Scripts/downloadreport.bat</operation>
+                                       <operation source="constant"
+                                                  to="INFA-commandTask/input[1]/script-1/inputArguments">"{$temp.ExportMeteringData[1]/inout[1]/icSessionId}","{$temp.ExportMeteringData[1]/inout[1]/jobId}"</operation>
+                                       <operation source="constant" to="INFA-commandTask/input[1]/script-1/workDir"/>
+                                    </parameter>
+                                 </serviceInput>
+                                 <serviceOutput>
+                                    <operation source="field" to="temp.Download Report/output/Run_Id">Run Id</operation>
+                                    <operation source="field" to="temp.Download Report/output/Start_Time">Start Time</operation>
+                                    <operation source="field" to="temp.Download Report/output/End_Time">End Time</operation>
+                                    <operation source="field" to="temp.Download Report/output/Exit_Code">Exit Code</operation>
+                                    <operation source="field" to="temp.Download Report/output/Execution_Status">Execution Status</operation>
+                                    <operation source="field" to="temp.Download Report/output/Std_Error">Std Error</operation>
+                                 </serviceOutput>
+                              </service>
+                              <flow id="lmb9rozt">
+                                 <link id="lmb9rozu" targetId="lmb9rozr" type="containerLink"/>
+                              </flow>
+                              <flow id="lmb9rozw">
+                                 <throw id="lmb9rp3l">
+                                    <title>Throw Download</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$temp.DownloadReport[1]/fault[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">"Check log for details."</parameter>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lmb9rozs" targetId="lmb9rozt" type="containerLink"/>
+                              <events>
+                                 <catch faultField="temp.Download Report/fault"
+                                        id="lmapusws"
+                                        interrupting="true"
+                                        name="error">
+                                    <link id="lmb9rozv" targetId="lmb9rozw" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lmb9royw" targetId="lmb9rown" type="containerLink"/>
+                        </flow>
+                        <flow id="lmb9royy">
+                           <throw id="lmb9rp2z">
+                              <title>Throw Export</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">{$temp.ExportMeteringData[1]/fault[1]/code}</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">{$temp.ExportMeteringData[1]/fault[1]/detail[1]/errOutputDetail[1]/Error_Message}</parameter>
+                                 <parameter name="reason" source="constant" updatable="true"/>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="lmb9royu" targetId="lmb9royv" type="containerLink"/>
+                        <events>
+                           <catch faultField="temp.Export Metering Data/fault"
+                                  id="lmapusuj"
+                                  interrupting="true"
+                                  name="error">
+                              <link id="lmb9royx" targetId="lmb9royy" type="containerLink"/>
+                           </catch>
+                           <catch faultField="temp.Export Metering Data/fault"
+                                  id="lmapusuk"
+                                  interrupting="true"
+                                  name="warning">
+                              <suspend/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lmb9rovq" targetId="lm9y4yty" type="containerLink"/>
+                  </flow>
+                  <flow id="lmb9rovs">
+                     <throw id="lmb9rp2a">
+                        <title>Throw Login</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">{$temp.Login[1]/fault[1]/code}{$temp.Login[1]/fault[1]/detail[1]/errOutputDetail[1]/Error_M{$temp.Login[1]/fault[1]/code} essage} </parameter>
+                           <parameter name="detail" source="constant" updatable="true">{$temp.Login[1]/fault[1]/detail[1]/errOutputDetail[1]/Error_Message}</parameter>
+                           <parameter name="reason" source="constant" updatable="true"/>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lmb9rovo" targetId="lmb9rovp" type="containerLink"/>
+                  <link id="lmb9roz5" targetId="lmb9roz4"/>
+                  <events>
+                     <catch faultField="temp.Login/fault"
+                            id="lm9y4ytw"
+                            interrupting="true"
+                            name="error">
+                        <link id="lmb9rovr" targetId="lmb9rovs" type="containerLink"/>
+                     </catch>
+                     <catch faultField="temp.Login/fault"
+                            id="lm9y4ytx"
+                            interrupting="true"
+                            name="warning">
+                        <suspend/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="lmb9roz4">
+                  <title>End</title>
+               </end>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-IDMC-Login"
+                              isByCopy="true"
+                              name="mt-IDMC-Login">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Max Wait (Seconds)"
+                            name="Max_Wait"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-IDMC-Export-Metering-Data"
+                              isByCopy="true"
+                              name="mt-IDMC-Export-Metering-Data">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="InOut Parameters"
+                            name="inout"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Max Wait (Seconds)"
+                            name="Max_Wait"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INFA-commandTask"
+                              isByCopy="true"
+                              name="INFA-commandTask">
+                  <description>This process object represents a taskflow specific command task output field details.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>0u9A8pthVZ1gstoBARUrwi</types1:GUID>
+      <types1:DisplayName>Taskflow_IPU_Usage</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-12T15:57:55.339Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
