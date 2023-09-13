@@ -23,7 +23,7 @@
     }
   },
   "dataFileExtension" : "zip",
-  "updateTime" : "2023-09-12T21:34:00.110Z",
+  "updateTime" : "2023-09-13T17:39:39.324Z",
   "objectRefs" : [ {
     "id" : "7UlBygQZ8oJekKMhYOmE89",
     "name" : "BS_restAPI",
@@ -36,37 +36,7 @@
       "repoInfo" : {
         "repoHandle" : "01CMJI2700000000000J"
       },
-      "contextAttributes" : [ {
-        "name" : "id",
-        "value" : "@1"
-      }, {
-        "name" : "01CMJI28000000000014",
-        "value" : "7UlBygQZ8oJekKMhYOmE89@commitHistory"
-      }, {
-        "name" : "01CMJI28000000000011",
-        "value" : "7UlBygQZ8oJekKMhYOmE89@IPUUsage"
-      }, {
-        "name" : "01CMJI2800000000000V",
-        "value" : "7UlBygQZ8oJekKMhYOmE89@activityLog"
-      }, {
-        "name" : "01CMJI2800000000000W",
-        "value" : "7UlBygQZ8oJekKMhYOmE89@users"
-      }, {
-        "name" : "01CMJI28000000000015",
-        "value" : "7UlBygQZ8oJekKMhYOmE89@commitDetails"
-      }, {
-        "name" : "01CMJI2800000000000U",
-        "value" : "7UlBygQZ8oJekKMhYOmE89@connection"
-      }, {
-        "name" : "01CMJI2800000000000X",
-        "value" : "7UlBygQZ8oJekKMhYOmE89@groups"
-      }, {
-        "name" : "01CMJI2800000000000Y",
-        "value" : "7UlBygQZ8oJekKMhYOmE89@roles"
-      }, {
-        "name" : "01CMJI28000000000010",
-        "value" : "7UlBygQZ8oJekKMhYOmE89@license"
-      } ],
+      "contextAttributes" : null,
       "additionalInfo" : {
         "description" : "",
         "contentType" : "JSON",
@@ -74,25 +44,5 @@
       }
     },
     "path" : "/Explore/BCBS"
-  }, {
-    "id" : "0kmm4ZfPTVXbfO81Zsyd0k",
-    "name" : "IDMC_Oracle",
-    "type" : "Connection",
-    "metadata" : {
-      "modelVersion" : {
-        "major" : 0,
-        "minor" : 0
-      },
-      "repoInfo" : {
-        "repoHandle" : "01CMJI0B00000000000I"
-      },
-      "contextAttributes" : null,
-      "additionalInfo" : {
-        "description" : null,
-        "contentType" : "JSON",
-        "documentState" : "COMPLETE"
-      }
-    },
-    "path" : "/SYS"
   } ]
 }
