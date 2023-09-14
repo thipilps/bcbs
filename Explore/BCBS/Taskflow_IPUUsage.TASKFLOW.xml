@@ -13,10 +13,10 @@
       <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2023-09-08T01:57:35Z</types1:CreationDate>
       <types1:ModifiedBy>tnsilva@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2023-09-12T20:52:11Z</types1:ModificationDate>
+      <types1:ModificationDate>2023-09-14T04:42:24Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>tnsilva@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2023-09-12T21:23:20Z</types1:PublicationDate>
+      <types1:PublicationDate>2023-09-14T04:42:30Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/tf.Taskflow_IPUUsage/Taskflow_IPUUsage.tf.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -31,6 +31,15 @@
             <description/>
             <tags/>
             <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="RunLogin" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Y</option>
+                     <option name="source">constant</option>
+                  </options>
+               </parameter>
+            </input>
             <tempFields>
                <field description="" name="Export Metering Data" type="reference">
                   <options>
@@ -53,6 +62,13 @@
                      <option name="referenceTo">$po:mt-IDMC-IPUUsage</option>
                   </options>
                </field>
+               <field description="" name="Login" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
             </tempFields>
             <notes/>
             <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
@@ -60,8 +76,56 @@
             </deployment>
             <flow id="a">
                <start id="b">
-                  <link id="lmgj569b" targetId="lmgj56a4"/>
+                  <link id="lmiont3z" targetId="lmiont3y"/>
                </start>
+               <container id="lmiont3y" type="exclusive">
+                  <title>Run Login</title>
+                  <flow id="lmiont42">
+                     <eventContainer id="lmiont5a">
+                        <subflow id="lmiont54">
+                           <title>Login</title>
+                           <subflowGUID>5RlEWISSL2KbsAqQDfMFUH</subflowGUID>
+                           <subflowPath>Taskflow_Login</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input/>
+                           <outputDef/>
+                        </subflow>
+                        <flow id="lmiont5c">
+                           <link id="lmiont5d" targetId="lmiont5a" type="containerLink"/>
+                        </flow>
+                        <flow id="lmiont5f">
+                           <throw id="lmiont5s">
+                              <title>Throw Login</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">{$output.faultLogin[1]/code}</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">{$output.faultLogin[1]/detail}</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">{$output.faultLogin[1]/reason}</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="lmiont5b" targetId="lmiont5c" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultLogin" id="lmigzwy8" interrupting="true">
+                              <link id="lmiont5e" targetId="lmiont5f" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lmiont43" targetId="lmiont3y" type="containerLink"/>
+                  </flow>
+                  <flow id="lmiont45">
+                     <link id="lmiont46" targetId="lmiont3y" type="containerLink"/>
+                  </flow>
+                  <link id="lmiont41" targetId="lmiont42" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$input.RunLogin}</arg>
+                           <arg name="right">Y</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lmiont53" targetId="lmgj56a4"/>
+                  <link id="lmiont44" targetId="lmiont45" type="containerLink"/>
+               </container>
                <eventContainer id="lmgj56a4">
                   <service id="lmgj569a">
                      <title>Export Metering Data</title>
@@ -137,8 +201,8 @@
                            </serviceOutput>
                         </service>
                         <flow id="lmgj56dk">
-                           <eventContainer id="lmgj56f2">
-                              <service id="lmgj56eb">
+                           <eventContainer id="lmimicym">
+                              <service id="lmimicxu">
                                  <title>Load IPU Usage Report</title>
                                  <serviceName>ICSExecuteDataTask</serviceName>
                                  <serviceGUID/>
@@ -173,15 +237,14 @@
                                     <operation source="field" to="temp.Load IPU Usage Report/output/TotalTransErrors">Total Transformation Errors</operation>
                                     <operation source="field" to="temp.Load IPU Usage Report/output/FirstErrorCode">First Error Code</operation>
                                     <operation source="field" to="temp.Load IPU Usage Report/inout/Environment">Environment</operation>
-                                    <operation source="field" to="temp.Load IPU Usage Report/inout/FileName">FileName</operation>
                                  </serviceOutput>
                               </service>
-                              <flow id="lmgj56ge">
-                                 <link id="lmgj56gf" targetId="lmgj56f2" type="containerLink"/>
+                              <flow id="lmimid00">
+                                 <link id="lmimid01" targetId="lmimicym" type="containerLink"/>
                               </flow>
-                              <flow id="lmgj56gh">
-                                 <throw id="lmgj56gx">
-                                    <title>Throw 1</title>
+                              <flow id="lmimid03">
+                                 <throw id="lmimid0m">
+                                    <title>Throw IPU Usage</title>
                                     <throwInput>
                                        <parameter name="code" source="constant" updatable="true">{$temp.LoadIPUUsageReport[1]/fault[1]/code}</parameter>
                                        <parameter name="detail" source="constant" updatable="true">{$temp.LoadIPUUsageReport[1]/fault[1]/detail[1]/errOutputDetail[1]/Error_Message}</parameter>
@@ -189,16 +252,16 @@
                                     </throwInput>
                                  </throw>
                               </flow>
-                              <link id="lmgj56gd" targetId="lmgj56ge" type="containerLink"/>
+                              <link id="lmimiczz" targetId="lmimid00" type="containerLink"/>
                               <events>
                                  <catch faultField="temp.Load IPU Usage Report/fault"
-                                        id="lmgj56f0"
+                                        id="lmimicyk"
                                         interrupting="true"
                                         name="error">
-                                    <link id="lmgj56gg" targetId="lmgj56gh" type="containerLink"/>
+                                    <link id="lmimid02" targetId="lmimid03" type="containerLink"/>
                                  </catch>
                                  <catch faultField="temp.Load IPU Usage Report/fault"
-                                        id="lmgj56f1"
+                                        id="lmimicyl"
                                         interrupting="true"
                                         name="warning"/>
                               </events>
@@ -264,6 +327,11 @@
                   <description/>
                   <tags/>
                   <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
                      <field label="InOut Parameters"
                             name="inout"
                             nullable="true"
@@ -317,6 +385,11 @@
                   <description/>
                   <tags/>
                   <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
                      <field label="InOut Parameters"
                             name="inout"
                             nullable="true"
@@ -344,11 +417,19 @@
                             type="int"/>
                   </detail>
                </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="InternalInfaSubTaskflowField"
+                              isByCopy="true"
+                              name="InternalInfaSubTaskflowField">
+                  <description>This process object represents a subtaskflow type reference field.</description>
+                  <tags/>
+                  <detail/>
+               </processObject>
             </dependencies>
          </taskflow>
       </types1:Entry>
       <types1:GUID>0u9A8pthVZ1gstoBARUrwi</types1:GUID>
       <types1:DisplayName>Taskflow_IPUUsage</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2023-09-12T21:33:59.44Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2023-09-14T15:22:08.92Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

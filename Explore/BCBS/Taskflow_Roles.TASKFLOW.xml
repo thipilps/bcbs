@@ -12,10 +12,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2023-09-12T18:09:08Z</types1:CreationDate>
-      <types1:ModifiedBy/>
+      <types1:ModifiedBy>tnsilva@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2023-09-14T04:44:55Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>tnsilva@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2023-09-12T21:23:20Z</types1:PublicationDate>
+      <types1:PublicationDate>2023-09-14T04:45:00Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/tf.Taskflow_Roles/Taskflow_Roles.tf.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -30,12 +31,28 @@
             <description/>
             <tags/>
             <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="RunLogin" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Y</option>
+                     <option name="source">constant</option>
+                  </options>
+               </parameter>
+            </input>
             <tempFields>
                <field description="" name="Roles" type="reference">
                   <options>
                      <option name="failOnNotRun">true</option>
                      <option name="failOnFault">true</option>
                      <option name="referenceTo">$po:mt-IDMC-Roles</option>
+                  </options>
+               </field>
+               <field description="" name="Login" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">true</option>
                   </options>
                </field>
             </tempFields>
@@ -45,8 +62,56 @@
             </deployment>
             <flow id="a">
                <start id="b">
-                  <link id="lmgmjz1m" targetId="lmgmjz1r"/>
+                  <link id="lmior2ro" targetId="lmior2rn"/>
                </start>
+               <container id="lmior2rn" type="exclusive">
+                  <title>Run Login</title>
+                  <flow id="lmior2rr">
+                     <eventContainer id="lmior2s6">
+                        <subflow id="lmior2s2">
+                           <title>Login</title>
+                           <subflowGUID>5RlEWISSL2KbsAqQDfMFUH</subflowGUID>
+                           <subflowPath>Taskflow_Login</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input/>
+                           <outputDef/>
+                        </subflow>
+                        <flow id="lmior2s8">
+                           <link id="lmior2s9" targetId="lmior2s6" type="containerLink"/>
+                        </flow>
+                        <flow id="lmior2sb">
+                           <throw id="lmior2sw">
+                              <title>Throw Login</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">{$output.faultLogin[1]/code}</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">{$output.faultLogin[1]/detail}</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">{$output.faultLogin[1]/reason}</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="lmior2s7" targetId="lmior2s8" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultLogin" id="lmino4o0" interrupting="true">
+                              <link id="lmior2sa" targetId="lmior2sb" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lmior2rs" targetId="lmior2rn" type="containerLink"/>
+                  </flow>
+                  <flow id="lmior2ru">
+                     <link id="lmior2rv" targetId="lmior2rn" type="containerLink"/>
+                  </flow>
+                  <link id="lmior2rq" targetId="lmior2rr" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$input.RunLogin}</arg>
+                           <arg name="right">Y</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lmior2s1" targetId="lmgmjz1r"/>
+                  <link id="lmior2rt" targetId="lmior2ru" type="containerLink"/>
+               </container>
                <eventContainer id="lmgmjz1r">
                   <service id="lmgmjz1l">
                      <title>Roles</title>
@@ -119,6 +184,11 @@
                   <description/>
                   <tags/>
                   <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
                      <field label="InOut Parameters"
                             name="inout"
                             nullable="true"
@@ -146,11 +216,19 @@
                             type="int"/>
                   </detail>
                </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="InternalInfaSubTaskflowField"
+                              isByCopy="true"
+                              name="InternalInfaSubTaskflowField">
+                  <description>This process object represents a subtaskflow type reference field.</description>
+                  <tags/>
+                  <detail/>
+               </processObject>
             </dependencies>
          </taskflow>
       </types1:Entry>
       <types1:GUID>leLHYWEM2OMc3eaOfh5UQd</types1:GUID>
       <types1:DisplayName>Taskflow_Roles</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2023-09-12T21:33:59.503Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2023-09-14T15:22:08.977Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

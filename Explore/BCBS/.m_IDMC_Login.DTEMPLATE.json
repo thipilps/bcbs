@@ -23,28 +23,8 @@
     }
   },
   "dataFileExtension" : "zip",
-  "updateTime" : "2023-09-12T21:34:00.105Z",
+  "updateTime" : "2023-09-14T15:22:09.293Z",
   "objectRefs" : [ {
-    "id" : "0kmm4ZfPTVXbfO81Zsyd0k",
-    "name" : "IDMC_Oracle",
-    "type" : "Connection",
-    "metadata" : {
-      "modelVersion" : {
-        "major" : 0,
-        "minor" : 0
-      },
-      "repoInfo" : {
-        "repoHandle" : "01CMJI0B00000000000I"
-      },
-      "contextAttributes" : null,
-      "additionalInfo" : {
-        "description" : null,
-        "contentType" : "JSON",
-        "documentState" : "COMPLETE"
-      }
-    },
-    "path" : "/SYS"
-  }, {
     "id" : "6lgaOTTzJINdiqnDzDdWwS",
     "name" : "BS_Login",
     "type" : "BSERVICE",
@@ -56,16 +36,7 @@
       "repoInfo" : {
         "repoHandle" : "01CMJI2700000000000K"
       },
-      "contextAttributes" : [ {
-        "name" : "id",
-        "value" : "@1"
-      }, {
-        "name" : "01CMJI28000000000013",
-        "value" : "6lgaOTTzJINdiqnDzDdWwS@logout"
-      }, {
-        "name" : "01CMJI28000000000012",
-        "value" : "6lgaOTTzJINdiqnDzDdWwS@login"
-      } ],
+      "contextAttributes" : null,
       "additionalInfo" : {
         "description" : "",
         "contentType" : "JSON",
@@ -73,25 +44,5 @@
       }
     },
     "path" : "/Explore/BCBS"
-  }, {
-    "id" : "90wlWHyWI6UeRnqkOZJNG0",
-    "name" : "IDMC_SrcFiles",
-    "type" : "Connection",
-    "metadata" : {
-      "modelVersion" : {
-        "major" : 0,
-        "minor" : 0
-      },
-      "repoInfo" : {
-        "repoHandle" : "01CMJI0B000000000003"
-      },
-      "contextAttributes" : null,
-      "additionalInfo" : {
-        "description" : null,
-        "contentType" : "JSON",
-        "documentState" : "COMPLETE"
-      }
-    },
-    "path" : "/SYS"
   } ]
 }

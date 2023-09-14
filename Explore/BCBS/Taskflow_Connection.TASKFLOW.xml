@@ -1,8 +1,8 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>fZfYEWNTrKkQIW3-gt-15294621-2023-09-12T18:15:04.09Z::tf.xml</types1:EntryId>
-      <types1:Name>Taskflow_Users</types1:Name>
+      <types1:EntryId>6D5bfTQbdxWq9bd-gt-15240322-2023-09-14T04:38:04.935Z::tf.xml</types1:EntryId>
+      <types1:Name>Taskflow_Connection</types1:Name>
       <types1:MimeType>application/xml+taskflow</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -11,20 +11,19 @@
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
       <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
-      <types1:CreationDate>2023-09-12T18:15:04Z</types1:CreationDate>
-      <types1:ModifiedBy>tnsilva@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2023-09-14T14:45:48Z</types1:ModificationDate>
+      <types1:CreationDate>2023-09-14T04:38:05Z</types1:CreationDate>
+      <types1:ModifiedBy/>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>tnsilva@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2023-09-14T14:45:55Z</types1:PublicationDate>
-      <types1:PublishedContributionId>project:/tf.Taskflow_Users/Taskflow_Users.tf.xml</types1:PublishedContributionId>
+      <types1:PublicationDate>2023-09-14T04:38:10Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.Taskflow_Connection/Taskflow_Connection.tf.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
          <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
                    xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
                    xmlns:list="urn:activevos:spi:list:functions"
-                   displayName="Taskflow_Users"
-                   name="Taskflow_Users"
+                   displayName="Taskflow_Connection"
+                   name="Taskflow_Connection"
                    overrideAPIName="false">
             <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
             <appliesTo/>
@@ -41,18 +40,18 @@
                </parameter>
             </input>
             <tempFields>
-               <field description="" name="Users" type="reference">
-                  <options>
-                     <option name="failOnNotRun">true</option>
-                     <option name="failOnFault">true</option>
-                     <option name="referenceTo">$po:mt-IDMC-Users</option>
-                  </options>
-               </field>
-               <field description="" name="Login" type="reference">
+               <field description="" name="Taskflow_Login" type="reference">
                   <options>
                      <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
                      <option name="failOnNotRun">false</option>
                      <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="Connection" type="reference">
+                  <options>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                     <option name="referenceTo">$po:mt-IDMC-Connection</option>
                   </options>
                </field>
             </tempFields>
@@ -62,25 +61,25 @@
             </deployment>
             <flow id="a">
                <start id="b">
-                  <link id="lmja7jdc" targetId="lmja7jdb"/>
+                  <link id="lmiogxsa" targetId="lmiogxs9"/>
                </start>
-               <container id="lmja7jdb" type="exclusive">
+               <container id="lmiogxs9" type="exclusive">
                   <title>Run Login</title>
-                  <flow id="lmja7jdf">
-                     <eventContainer id="lmja7jes">
-                        <subflow id="lmja7jdq">
-                           <title>Login</title>
+                  <flow id="lmiogxsd">
+                     <eventContainer id="lmiogxt2">
+                        <subflow id="lmiogxsu">
+                           <title>Taskflow_Login</title>
                            <subflowGUID>5RlEWISSL2KbsAqQDfMFUH</subflowGUID>
                            <subflowPath>Taskflow_Login</subflowPath>
                            <runForEach>false</runForEach>
                            <input/>
                            <outputDef/>
                         </subflow>
-                        <flow id="lmja7jeu">
-                           <link id="lmja7jev" targetId="lmja7jes" type="containerLink"/>
+                        <flow id="lmiogxt4">
+                           <link id="lmiogxt5" targetId="lmiogxt2" type="containerLink"/>
                         </flow>
-                        <flow id="lmja7jex">
-                           <throw id="lmja7jfg">
+                        <flow id="lmiogxt7">
+                           <throw id="lmiogxtn">
                               <title>Throw Login</title>
                               <throwInput>
                                  <parameter name="code" source="constant" updatable="true">{$output.faultLogin[1]/code}</parameter>
@@ -89,19 +88,19 @@
                               </throwInput>
                            </throw>
                         </flow>
-                        <link id="lmja7jet" targetId="lmja7jeu" type="containerLink"/>
+                        <link id="lmiogxt3" targetId="lmiogxt4" type="containerLink"/>
                         <events>
-                           <catch faultField="faultLogin" id="lmja7jen" interrupting="true">
-                              <link id="lmja7jew" targetId="lmja7jex" type="containerLink"/>
+                           <catch faultField="faultLogin" id="lmiogxsw" interrupting="true">
+                              <link id="lmiogxt6" targetId="lmiogxt7" type="containerLink"/>
                            </catch>
                         </events>
                      </eventContainer>
-                     <link id="lmja7jdg" targetId="lmja7jdb" type="containerLink"/>
+                     <link id="lmiogxse" targetId="lmiogxs9" type="containerLink"/>
                   </flow>
-                  <flow id="lmja7jdi">
-                     <link id="lmja7jdj" targetId="lmja7jdb" type="containerLink"/>
+                  <flow id="lmiogxsg">
+                     <link id="lmiogxsh" targetId="lmiogxs9" type="containerLink"/>
                   </flow>
-                  <link id="lmja7jde" targetId="lmja7jdf" type="containerLink">
+                  <link id="lmiogxsc" targetId="lmiogxsd" type="containerLink">
                      <condition source="formula">
                         <function name="contains">
                            <arg name="left">{$input.RunLogin}</arg>
@@ -109,67 +108,67 @@
                         </function>
                      </condition>
                   </link>
-                  <link id="lmja7jdh" targetId="lmja7jdi" type="containerLink"/>
-                  <link id="lmja7jdd" targetId="lmgms0tm"/>
+                  <link id="lmiogxu6" targetId="lmiogxuz"/>
+                  <link id="lmiogxsf" targetId="lmiogxsg" type="containerLink"/>
                </container>
-               <eventContainer id="lmgms0tm">
-                  <service id="lmgms0sw">
-                     <title>Users</title>
+               <eventContainer id="lmiogxuz">
+                  <service id="lmiogxu5">
+                     <title>Connection</title>
                      <serviceName>ICSExecuteDataTask</serviceName>
                      <serviceGUID/>
                      <serviceInput>
                         <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
                         <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
-                        <parameter name="Task Name" source="constant" updatable="true">mt_IDMC_Users</parameter>
-                        <parameter name="GUID" source="constant" updatable="true">0gBatNJY43QgEdQarecqAE</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_IDMC_Connection</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">auBx95gnGSGbNZK9lfHI2s</parameter>
                         <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
                         <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
                         <parameter name="taskField" source="nested">
-                           <operation source="field" to="mt-IDMC-Users">temp.Users</operation>
+                           <operation source="field" to="mt-IDMC-Connection">temp.Connection</operation>
                         </parameter>
                      </serviceInput>
                      <serviceOutput>
-                        <operation source="field" to="temp.Users/output/Object_Name">Object Name</operation>
-                        <operation source="field" to="temp.Users/output/Run_Id">Run Id</operation>
-                        <operation source="field" to="temp.Users/output/Log_Id">Log Id</operation>
-                        <operation source="field" to="temp.Users/output/Task_Id">Task Id</operation>
-                        <operation source="field" to="temp.Users/output/Task_Status">Task Status</operation>
-                        <operation source="field" to="temp.Users/output/Success_Source_Rows">Success Source Rows</operation>
-                        <operation source="field" to="temp.Users/output/Failed_Source_Rows">Failed Source Rows</operation>
-                        <operation source="field" to="temp.Users/output/Success_Target_Rows">Success Target Rows</operation>
-                        <operation source="field" to="temp.Users/output/Failed_Target_Rows">Failed Target Rows</operation>
-                        <operation source="field" to="temp.Users/output/Start_Time">Start Time</operation>
-                        <operation source="field" to="temp.Users/output/End_Time">End Time</operation>
-                        <operation source="field" to="temp.Users/output/Error_Message">Error Message</operation>
-                        <operation source="field" to="temp.Users/output/TotalTransErrors">Total Transformation Errors</operation>
-                        <operation source="field" to="temp.Users/output/FirstErrorCode">First Error Code</operation>
-                        <operation source="field" to="temp.Users/inout/Environment">Environment</operation>
+                        <operation source="field" to="temp.Connection/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Connection/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Connection/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Connection/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Connection/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Connection/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Connection/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Connection/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Connection/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Connection/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Connection/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Connection/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Connection/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Connection/output/FirstErrorCode">First Error Code</operation>
+                        <operation source="field" to="temp.Connection/inout/Environment">Environment</operation>
                      </serviceOutput>
                   </service>
-                  <flow id="lmgms0us">
-                     <link id="lmgms0ut" targetId="lmgms0tm" type="containerLink"/>
+                  <flow id="lmiogxwd">
+                     <link id="lmiogxwe" targetId="lmiogxuz" type="containerLink"/>
                   </flow>
-                  <flow id="lmgms0uv">
-                     <throw id="lmgms0v5">
-                        <title>Throw Users</title>
+                  <flow id="lmiogxwg">
+                     <throw id="lmiogxwz">
+                        <title>Throw Connection</title>
                         <throwInput>
-                           <parameter name="code" source="constant" updatable="true">{$temp.Users[1]/fault[1]/code}</parameter>
-                           <parameter name="detail" source="constant" updatable="true">{$temp.Users[1]/fault[1]/detail[1]/errOutputDetail[1]/Error_Message}</parameter>
+                           <parameter name="code" source="constant" updatable="true">{$temp.Connection[1]/fault[1]/code}</parameter>
+                           <parameter name="detail" source="constant" updatable="true">{$temp.Connection[1]/fault[1]/code}{$temp.Connection[1]/fault[1]/detail[1]/errOutputDetail[1]/Error_Message} </parameter>
                            <parameter name="reason" source="constant" updatable="true"/>
                         </throwInput>
                      </throw>
                   </flow>
-                  <link id="lmgms0ur" targetId="lmgms0us" type="containerLink"/>
-                  <link id="lmgms0sy" targetId="c"/>
+                  <link id="lmiogxwc" targetId="lmiogxwd" type="containerLink"/>
+                  <link id="lmiogxu7" targetId="c"/>
                   <events>
-                     <catch faultField="temp.Users/fault"
-                            id="lmgms0tk"
+                     <catch faultField="temp.Connection/fault"
+                            id="lmiogxux"
                             interrupting="true"
                             name="error">
-                        <link id="lmgms0uu" targetId="lmgms0uv" type="containerLink"/>
+                        <link id="lmiogxwf" targetId="lmiogxwg" type="containerLink"/>
                      </catch>
-                     <catch faultField="temp.Users/fault"
-                            id="lmgms0tl"
+                     <catch faultField="temp.Connection/fault"
+                            id="lmiogxuy"
                             interrupting="true"
                             name="warning"/>
                   </events>
@@ -178,9 +177,17 @@
             </flow>
             <dependencies>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
-                              displayName="mt-IDMC-Users"
+                              displayName="InternalInfaSubTaskflowField"
                               isByCopy="true"
-                              name="mt-IDMC-Users">
+                              name="InternalInfaSubTaskflowField">
+                  <description>This process object represents a subtaskflow type reference field.</description>
+                  <tags/>
+                  <detail/>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-IDMC-Connection"
+                              isByCopy="true"
+                              name="mt-IDMC-Connection">
                   <description/>
                   <tags/>
                   <detail>
@@ -216,19 +223,11 @@
                             type="int"/>
                   </detail>
                </processObject>
-               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
-                              displayName="InternalInfaSubTaskflowField"
-                              isByCopy="true"
-                              name="InternalInfaSubTaskflowField">
-                  <description>This process object represents a subtaskflow type reference field.</description>
-                  <tags/>
-                  <detail/>
-               </processObject>
             </dependencies>
          </taskflow>
       </types1:Entry>
-      <types1:GUID>5vB6A67dalNgvTK4YtWEWB</types1:GUID>
-      <types1:DisplayName>Taskflow_Users</types1:DisplayName>
+      <types1:GUID>aLLSDLDs9T4ghLMgARddIs</types1:GUID>
+      <types1:DisplayName>Taskflow_Connection</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2023-09-14T15:22:08.997Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2023-09-14T15:22:08.901Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

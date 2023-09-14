@@ -13,10 +13,10 @@
       <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2023-09-12T17:46:36Z</types1:CreationDate>
       <types1:ModifiedBy>tnsilva@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2023-09-12T17:46:50Z</types1:ModificationDate>
+      <types1:ModificationDate>2023-09-14T04:23:42Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>tnsilva@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2023-09-12T21:23:20Z</types1:PublicationDate>
+      <types1:PublicationDate>2023-09-14T04:24:37Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/tf.Taskflow_ActivityLog/Taskflow_ActivityLog.tf.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -31,12 +31,28 @@
             <description/>
             <tags/>
             <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="RunLogin" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Y</option>
+                     <option name="source">constant</option>
+                  </options>
+               </parameter>
+            </input>
             <tempFields>
                <field description="" name="Activity Log" type="reference">
                   <options>
                      <option name="failOnNotRun">true</option>
                      <option name="failOnFault">true</option>
                      <option name="referenceTo">$po:mt-IDMC-ActivityLog</option>
+                  </options>
+               </field>
+               <field description="" name="Taskflow_Login" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">true</option>
                   </options>
                </field>
             </tempFields>
@@ -46,8 +62,56 @@
             </deployment>
             <flow id="a">
                <start id="b">
-                  <link id="lmglstsv" targetId="lmglsttk"/>
+                  <link id="lminw4a5" targetId="lminw4a4"/>
                </start>
+               <container id="lminw4a4" type="exclusive">
+                  <title>Run Login</title>
+                  <flow id="lminw4a8">
+                     <eventContainer id="lminw4d1">
+                        <subflow id="lminw4cx">
+                           <title>Taskflow_Login</title>
+                           <subflowGUID>5RlEWISSL2KbsAqQDfMFUH</subflowGUID>
+                           <subflowPath>Taskflow_Login</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input/>
+                           <outputDef/>
+                        </subflow>
+                        <flow id="lminw4d3">
+                           <link id="lminw4d4" targetId="lminw4d1" type="containerLink"/>
+                        </flow>
+                        <flow id="lminw4d6">
+                           <throw id="lminw4dh">
+                              <title>Throw Login</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">{$output.faulLogin[1]/code}</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">{$output.faulLogin[1]/detail}</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">{$output.faulLogin[1]/reason}</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="lminw4d2" targetId="lminw4d3" type="containerLink"/>
+                        <events>
+                           <catch faultField="faulLogin" id="lmigtc2j" interrupting="true">
+                              <link id="lminw4d5" targetId="lminw4d6" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lminw4a9" targetId="lminw4a4" type="containerLink"/>
+                  </flow>
+                  <flow id="lminw4ab">
+                     <link id="lminw4ac" targetId="lminw4a4" type="containerLink"/>
+                  </flow>
+                  <link id="lminw4a7" targetId="lminw4a8" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$input.RunLogin}</arg>
+                           <arg name="right">Y</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lminw4ai" targetId="lmglsttk"/>
+                  <link id="lminw4aa" targetId="lminw4ab" type="containerLink"/>
+               </container>
                <eventContainer id="lmglsttk">
                   <service id="lmglstsu">
                      <title>Activity Log</title>
@@ -120,6 +184,11 @@
                   <description/>
                   <tags/>
                   <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
                      <field label="InOut Parameters"
                             name="inout"
                             nullable="true"
@@ -147,11 +216,19 @@
                             type="int"/>
                   </detail>
                </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="InternalInfaSubTaskflowField"
+                              isByCopy="true"
+                              name="InternalInfaSubTaskflowField">
+                  <description>This process object represents a subtaskflow type reference field.</description>
+                  <tags/>
+                  <detail/>
+               </processObject>
             </dependencies>
          </taskflow>
       </types1:Entry>
       <types1:GUID>11uID35pqjqiy1OdsEx78Q</types1:GUID>
       <types1:DisplayName>Taskflow_ActivityLog</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2023-09-13T17:39:57.088Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2023-09-14T15:22:08.958Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

@@ -12,10 +12,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2023-09-12T17:52:58Z</types1:CreationDate>
-      <types1:ModifiedBy/>
+      <types1:ModifiedBy>tnsilva@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2023-09-14T04:26:37Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>tnsilva@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2023-09-12T21:23:20Z</types1:PublicationDate>
+      <types1:PublicationDate>2023-09-14T04:26:59Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/tf.Taskflow_CommitHistory/Taskflow_CommitHistory.tf.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -30,12 +31,28 @@
             <description/>
             <tags/>
             <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="RunLogin" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Y</option>
+                     <option name="source">constant</option>
+                  </options>
+               </parameter>
+            </input>
             <tempFields>
                <field description="" name="Commit History" type="reference">
                   <options>
-                     <option name="failOnNotRun">false</option>
-                     <option name="failOnFault">false</option>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
                      <option name="referenceTo">$po:mt-IDMC-CommitHistory</option>
+                  </options>
+               </field>
+               <field description="" name="Login" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">true</option>
                   </options>
                </field>
             </tempFields>
@@ -45,8 +62,56 @@
             </deployment>
             <flow id="a">
                <start id="b">
-                  <link id="lmgly5g3" targetId="lmgly5gs"/>
+                  <link id="lmio34tv" targetId="lmio34tu"/>
                </start>
+               <container id="lmio34tu" type="exclusive">
+                  <title>Run Login</title>
+                  <flow id="lmio34ty">
+                     <eventContainer id="lmio34ud">
+                        <subflow id="lmio34u9">
+                           <title>Login</title>
+                           <subflowGUID>5RlEWISSL2KbsAqQDfMFUH</subflowGUID>
+                           <subflowPath>Taskflow_Login</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input/>
+                           <outputDef/>
+                        </subflow>
+                        <flow id="lmio34uf">
+                           <link id="lmio34ug" targetId="lmio34ud" type="containerLink"/>
+                        </flow>
+                        <flow id="lmio34ui">
+                           <throw id="lmio34ut">
+                              <title>Throw Login</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">{$output.faultLogin[1]/code}</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">{$output.faultLogin[1]/detail}</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">{$output.faultLogin[1]/reason}</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="lmio34ue" targetId="lmio34uf" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultLogin" id="lmigvgrd" interrupting="true">
+                              <link id="lmio34uh" targetId="lmio34ui" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lmio34tz" targetId="lmio34tu" type="containerLink"/>
+                  </flow>
+                  <flow id="lmio34u1">
+                     <link id="lmio34u2" targetId="lmio34tu" type="containerLink"/>
+                  </flow>
+                  <link id="lmio34tx" targetId="lmio34ty" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$input.RunLogin}</arg>
+                           <arg name="right">Y</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lmio34u8" targetId="lmgly5gs"/>
+                  <link id="lmio34u0" targetId="lmio34u1" type="containerLink"/>
+               </container>
                <eventContainer id="lmgly5gs">
                   <service id="lmgly5g2">
                      <title>Commit History</title>
@@ -81,13 +146,27 @@
                         <operation source="field" to="temp.Commit History/inout/Environment">Environment</operation>
                      </serviceOutput>
                   </service>
+                  <flow id="lmigvgsq">
+                     <link id="lmigvgsr" targetId="lmgly5gs" type="containerLink"/>
+                  </flow>
+                  <flow id="lmigvgst">
+                     <throw id="lmigvgt6">
+                        <title>Throw Commit History</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">{$temp.CommitHistory[1]/fault[1]/code}</parameter>
+                           <parameter name="detail" source="constant" updatable="true">{$temp.CommitHistory[1]/fault[1]/detail[1]/errOutputDetail[1]/Error_Message}</parameter>
+                           <parameter name="reason" source="constant" updatable="true"/>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lmigvgsp" targetId="lmigvgsq" type="containerLink"/>
                   <link id="lmgly5g4" targetId="c"/>
                   <events>
                      <catch faultField="temp.Commit History/fault"
                             id="lmgly5gq"
                             interrupting="true"
                             name="error">
-                        <suspend/>
+                        <link id="lmigvgss" targetId="lmigvgst" type="containerLink"/>
                      </catch>
                      <catch faultField="temp.Commit History/fault"
                             id="lmgly5gr"
@@ -105,6 +184,11 @@
                   <description/>
                   <tags/>
                   <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
                      <field label="InOut Parameters"
                             name="inout"
                             nullable="true"
@@ -132,11 +216,19 @@
                             type="int"/>
                   </detail>
                </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="InternalInfaSubTaskflowField"
+                              isByCopy="true"
+                              name="InternalInfaSubTaskflowField">
+                  <description>This process object represents a subtaskflow type reference field.</description>
+                  <tags/>
+                  <detail/>
+               </processObject>
             </dependencies>
          </taskflow>
       </types1:Entry>
       <types1:GUID>2XdKEI3b8HPdz5L1tagQee</types1:GUID>
       <types1:DisplayName>Taskflow_CommitHistory</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2023-09-12T21:33:59.456Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2023-09-14T15:22:08.94Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
