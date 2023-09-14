@@ -13,10 +13,10 @@
       <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2023-09-12T16:42:21Z</types1:CreationDate>
       <types1:ModifiedBy>tnsilva@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2023-09-12T18:16:40Z</types1:ModificationDate>
+      <types1:ModificationDate>2023-09-14T14:46:39Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>tnsilva@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2023-09-12T21:23:20Z</types1:PublicationDate>
+      <types1:PublicationDate>2023-09-14T15:54:17Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/tf.Taskflow_AllReports/Taskflow_AllReports.tf.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -39,7 +39,7 @@
                      <option name="failOnFault">true</option>
                   </options>
                </field>
-               <field description="" name="Taskflow_IPU_Usage" type="reference">
+               <field description="" name="IPU Usage" type="reference">
                   <options>
                      <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
                      <option name="failOnNotRun">true</option>
@@ -60,35 +60,35 @@
                      <option name="failOnFault">true</option>
                   </options>
                </field>
-               <field description="" name="Taskflow_Connection" type="reference">
+               <field description="" name="Groups" type="reference">
                   <options>
                      <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
                      <option name="failOnNotRun">true</option>
                      <option name="failOnFault">true</option>
                   </options>
                </field>
-               <field description="" name="Taskflow_Groups" type="reference">
+               <field description="" name="License" type="reference">
                   <options>
                      <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
                      <option name="failOnNotRun">true</option>
                      <option name="failOnFault">true</option>
                   </options>
                </field>
-               <field description="" name="Taskflow_License" type="reference">
+               <field description="" name="Roles" type="reference">
                   <options>
                      <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
                      <option name="failOnNotRun">true</option>
                      <option name="failOnFault">true</option>
                   </options>
                </field>
-               <field description="" name="Taskflow_Roles" type="reference">
+               <field description="" name="Users" type="reference">
                   <options>
                      <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
                      <option name="failOnNotRun">true</option>
                      <option name="failOnFault">true</option>
                   </options>
                </field>
-               <field description="" name="Taskflow_Users" type="reference">
+               <field description="" name="Connection" type="reference">
                   <options>
                      <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
                      <option name="failOnNotRun">true</option>
@@ -123,7 +123,9 @@
                                  <subflowGUID>11uID35pqjqiy1OdsEx78Q</subflowGUID>
                                  <subflowPath>Taskflow_ActivityLog</subflowPath>
                                  <runForEach>false</runForEach>
-                                 <input/>
+                                 <input>
+                                    <parameter name="RunLogin" source="constant" updatable="true">N</parameter>
+                                 </input>
                                  <outputDef/>
                               </subflow>
                               <flow id="lmglukpn">
@@ -155,7 +157,9 @@
                                  <subflowGUID>2XdKEI3b8HPdz5L1tagQee</subflowGUID>
                                  <subflowPath>Taskflow_CommitHistory</subflowPath>
                                  <runForEach>false</runForEach>
-                                 <input/>
+                                 <input>
+                                    <parameter name="RunLogin" source="constant" updatable="true">N</parameter>
+                                 </input>
                                  <outputDef/>
                               </subflow>
                               <flow id="lmgm386s">
@@ -181,32 +185,34 @@
                            <link id="lmgm3861" targetId="lmgjhy8a" type="containerLink"/>
                         </flow>
                         <flow id="lmgm8td1">
-                           <eventContainer id="lmgm8tel">
-                              <subflow id="lmgm8te1">
-                                 <title>Taskflow_Connection</title>
-                                 <subflowGUID>10S732czZIadCjVxGa9VIs</subflowGUID>
+                           <eventContainer id="lmiog6cp">
+                              <subflow id="lmiog6b2">
+                                 <title>Connection</title>
+                                 <subflowGUID>aLLSDLDs9T4ghLMgARddIs</subflowGUID>
                                  <subflowPath>Taskflow_Connection</subflowPath>
                                  <runForEach>false</runForEach>
-                                 <input/>
+                                 <input>
+                                    <parameter name="RunLogin" source="constant" updatable="true">N</parameter>
+                                 </input>
                                  <outputDef/>
                               </subflow>
-                              <flow id="lmgm8ten">
-                                 <link id="lmgm8teo" targetId="lmgm8tel" type="containerLink"/>
+                              <flow id="lmiog6cr">
+                                 <link id="lmiog6cs" targetId="lmiog6cp" type="containerLink"/>
                               </flow>
-                              <flow id="lmgm8teq">
-                                 <throw id="lmgm8tfy">
+                              <flow id="lmiog6cu">
+                                 <throw id="lmiog6fm">
                                     <title>Throw Connection</title>
                                     <throwInput>
-                                       <parameter name="code" source="constant" updatable="true">{$output.faulConnection[1]/code}</parameter>
-                                       <parameter name="detail" source="constant" updatable="true">{$output.faulConnection[1]/detail}</parameter>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faultConnection[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faultConnection[1]/detail}</parameter>
                                        <parameter name="reason" source="constant" updatable="true"/>
                                     </throwInput>
                                  </throw>
                               </flow>
-                              <link id="lmgm8tem" targetId="lmgm8ten" type="containerLink"/>
+                              <link id="lmiog6cq" targetId="lmiog6cr" type="containerLink"/>
                               <events>
-                                 <catch faultField="faulConnection" id="lmgm8te3" interrupting="true">
-                                    <link id="lmgm8tep" targetId="lmgm8teq" type="containerLink"/>
+                                 <catch faultField="faultConnection" id="lmiog6b4" interrupting="true">
+                                    <link id="lmiog6ct" targetId="lmiog6cu" type="containerLink"/>
                                  </catch>
                               </events>
                            </eventContainer>
@@ -215,11 +221,13 @@
                         <flow id="lmgme65e">
                            <eventContainer id="lmgme670">
                               <subflow id="lmgme66c">
-                                 <title>Taskflow_Groups</title>
+                                 <title>Groups</title>
                                  <subflowGUID>7Gn78w0nVgLcrxPNLwkycE</subflowGUID>
                                  <subflowPath>Taskflow_Groups</subflowPath>
                                  <runForEach>false</runForEach>
-                                 <input/>
+                                 <input>
+                                    <parameter name="RunLogin" source="constant" updatable="true">N</parameter>
+                                 </input>
                                  <outputDef/>
                               </subflow>
                               <flow id="lmgme672">
@@ -247,11 +255,13 @@
                         <flow id="lmgjhy8c">
                            <eventContainer id="lmgjhy91">
                               <subflow id="lmgjhy8p">
-                                 <title>Taskflow_IPU_Usage</title>
+                                 <title>IPU Usage</title>
                                  <subflowGUID>0u9A8pthVZ1gstoBARUrwi</subflowGUID>
                                  <subflowPath>Taskflow_IPUUsage</subflowPath>
                                  <runForEach>false</runForEach>
-                                 <input/>
+                                 <input>
+                                    <parameter name="RunLogin" source="constant" updatable="true">N</parameter>
+                                 </input>
                                  <outputDef/>
                               </subflow>
                               <flow id="lmgjhy93">
@@ -279,11 +289,13 @@
                         <flow id="lmgmi3je">
                            <eventContainer id="lmgmi3km">
                               <subflow id="lmgmi3ju">
-                                 <title>Taskflow_License</title>
+                                 <title>License</title>
                                  <subflowGUID>1pPBQCfYWFGbH8R86XKfwX</subflowGUID>
                                  <subflowPath>Taskflow_License</subflowPath>
                                  <runForEach>false</runForEach>
-                                 <input/>
+                                 <input>
+                                    <parameter name="RunLogin" source="constant" updatable="true">N</parameter>
+                                 </input>
                                  <outputDef/>
                               </subflow>
                               <flow id="lmgmi3ko">
@@ -311,11 +323,13 @@
                         <flow id="lmgmnnyi">
                            <eventContainer id="lmgmnnzw">
                               <subflow id="lmgmnnz0">
-                                 <title>Taskflow_Roles</title>
+                                 <title>Roles</title>
                                  <subflowGUID>leLHYWEM2OMc3eaOfh5UQd</subflowGUID>
                                  <subflowPath>Taskflow_Roles</subflowPath>
                                  <runForEach>false</runForEach>
-                                 <input/>
+                                 <input>
+                                    <parameter name="RunLogin" source="constant" updatable="true">N</parameter>
+                                 </input>
                                  <outputDef/>
                               </subflow>
                               <flow id="lmgmnnzy">
@@ -343,11 +357,13 @@
                         <flow id="lmgmux65">
                            <eventContainer id="lmgmux7p">
                               <subflow id="lmgmux6p">
-                                 <title>Taskflow_Users</title>
+                                 <title>Users</title>
                                  <subflowGUID>5vB6A67dalNgvTK4YtWEWB</subflowGUID>
                                  <subflowPath>Taskflow_Users</subflowPath>
                                  <runForEach>false</runForEach>
-                                 <input/>
+                                 <input>
+                                    <parameter name="RunLogin" source="constant" updatable="true">N</parameter>
+                                 </input>
                                  <outputDef/>
                               </subflow>
                               <flow id="lmgmux7r">
@@ -418,5 +434,5 @@
       <types1:GUID>76UCg7KK8SyltMehJk7b6r</types1:GUID>
       <types1:DisplayName>Taskflow_AllReports</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2023-09-12T21:33:59.579Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2023-09-14T16:22:09.596Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
