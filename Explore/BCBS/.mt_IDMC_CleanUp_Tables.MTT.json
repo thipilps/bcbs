@@ -1,7 +1,7 @@
 {
   "objectInfo" : {
-    "id" : "c9kmUHo0544hbm08Sf9DaE",
-    "name" : "mt_IDMC_IPUUsage",
+    "id" : "3evP9UqRhQIhK54szmR1qn",
+    "name" : "mt_IDMC_CleanUp_Tables",
     "type" : "MTT",
     "metadata" : {
       "modelVersion" : {
@@ -9,7 +9,7 @@
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "01CMJI0Z00000000000S"
+        "repoHandle" : "01CMJI0Z00000000000Z"
       },
       "contextAttributes" : [ {
         "name" : "id",
@@ -23,7 +23,7 @@
     }
   },
   "dataFileExtension" : "zip",
-  "updateTime" : "2023-09-21T02:48:47.265Z",
+  "updateTime" : "2023-09-21T02:48:47.268Z",
   "objectRefs" : [ {
     "id" : "0kmm4ZfPTVXbfO81Zsyd0k",
     "name" : "IDMC_REPORTS",
@@ -45,8 +45,8 @@
     },
     "path" : "/SYS"
   }, {
-    "id" : "ehzzpxp2dSYbXgYPZxN9g5",
-    "name" : "m_IDMC_IPUUsage",
+    "id" : "4GnAMQy3ngUh5PFTnNTJWq",
+    "name" : "m_IDMC_CleanUp_Tables",
     "type" : "DTEMPLATE",
     "metadata" : {
       "modelVersion" : {
@@ -54,7 +54,7 @@
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "01CMJI1700000000001B"
+        "repoHandle" : "01CMJI1700000000001E"
       },
       "contextAttributes" : [ {
         "name" : "id",
@@ -84,26 +84,6 @@
         "description" : null,
         "contentType" : "JSON",
         "documentState" : "VALID"
-      }
-    },
-    "path" : "/SYS"
-  }, {
-    "id" : "90wlWHyWI6UeRnqkOZJNG0",
-    "name" : "idmc_reports_directory",
-    "type" : "Connection",
-    "metadata" : {
-      "modelVersion" : {
-        "major" : 0,
-        "minor" : 0
-      },
-      "repoInfo" : {
-        "repoHandle" : "01CMJI0B000000000003"
-      },
-      "contextAttributes" : null,
-      "additionalInfo" : {
-        "description" : null,
-        "contentType" : "JSON",
-        "documentState" : "COMPLETE"
       }
     },
     "path" : "/SYS"

@@ -23,7 +23,7 @@
     }
   },
   "dataFileExtension" : "zip",
-  "updateTime" : "2023-09-14T15:22:09.296Z",
+  "updateTime" : "2023-09-21T02:48:47.268Z",
   "objectRefs" : [ {
     "id" : "9xVjsvkCia0eJ1WASYDUKW",
     "name" : "m_IDMC_Login",
@@ -49,7 +49,7 @@
     "path" : "/Explore/BCBS"
   }, {
     "id" : "0kmm4ZfPTVXbfO81Zsyd0k",
-    "name" : "IDMC_Oracle",
+    "name" : "IDMC_REPORTS",
     "type" : "Connection",
     "metadata" : {
       "modelVersion" : {
@@ -79,7 +79,16 @@
       "repoInfo" : {
         "repoHandle" : "01CMJI2700000000000K"
       },
-      "contextAttributes" : null,
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      }, {
+        "name" : "01CMJI28000000000013",
+        "value" : "6lgaOTTzJINdiqnDzDdWwS@logout"
+      }, {
+        "name" : "01CMJI28000000000012",
+        "value" : "6lgaOTTzJINdiqnDzDdWwS@login"
+      } ],
       "additionalInfo" : {
         "description" : "",
         "contentType" : "JSON",
@@ -129,7 +138,7 @@
     "path" : "/SYS"
   }, {
     "id" : "90wlWHyWI6UeRnqkOZJNG0",
-    "name" : "IDMC_SrcFiles",
+    "name" : "idmc_reports_directory",
     "type" : "Connection",
     "metadata" : {
       "modelVersion" : {

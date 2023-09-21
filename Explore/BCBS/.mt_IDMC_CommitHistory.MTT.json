@@ -23,7 +23,7 @@
     }
   },
   "dataFileExtension" : "zip",
-  "updateTime" : "2023-09-14T15:22:09.296Z",
+  "updateTime" : "2023-09-21T02:48:47.267Z",
   "objectRefs" : [ {
     "id" : "4pID1Wtv5W9b1Epldhq4oA",
     "name" : "m_IDMC_CommitHistory",
@@ -49,7 +49,7 @@
     "path" : "/Explore/BCBS"
   }, {
     "id" : "0kmm4ZfPTVXbfO81Zsyd0k",
-    "name" : "IDMC_Oracle",
+    "name" : "IDMC_REPORTS",
     "type" : "Connection",
     "metadata" : {
       "modelVersion" : {
@@ -79,7 +79,37 @@
       "repoInfo" : {
         "repoHandle" : "01CMJI2700000000000J"
       },
-      "contextAttributes" : null,
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      }, {
+        "name" : "01CMJI28000000000014",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@commitHistory"
+      }, {
+        "name" : "01CMJI28000000000011",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@IPUUsage"
+      }, {
+        "name" : "01CMJI2800000000000V",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@activityLog"
+      }, {
+        "name" : "01CMJI2800000000000W",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@users"
+      }, {
+        "name" : "01CMJI28000000000015",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@commitDetails"
+      }, {
+        "name" : "01CMJI2800000000000U",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@connection"
+      }, {
+        "name" : "01CMJI2800000000000X",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@groups"
+      }, {
+        "name" : "01CMJI2800000000000Y",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@roles"
+      }, {
+        "name" : "01CMJI28000000000010",
+        "value" : "7UlBygQZ8oJekKMhYOmE89@license"
+      } ],
       "additionalInfo" : {
         "description" : "",
         "contentType" : "JSON",

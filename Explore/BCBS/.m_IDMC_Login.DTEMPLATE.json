@@ -23,7 +23,7 @@
     }
   },
   "dataFileExtension" : "zip",
-  "updateTime" : "2023-09-14T15:22:09.293Z",
+  "updateTime" : "2023-09-21T02:48:47.265Z",
   "objectRefs" : [ {
     "id" : "6lgaOTTzJINdiqnDzDdWwS",
     "name" : "BS_Login",
@@ -36,7 +36,16 @@
       "repoInfo" : {
         "repoHandle" : "01CMJI2700000000000K"
       },
-      "contextAttributes" : null,
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      }, {
+        "name" : "01CMJI28000000000013",
+        "value" : "6lgaOTTzJINdiqnDzDdWwS@logout"
+      }, {
+        "name" : "01CMJI28000000000012",
+        "value" : "6lgaOTTzJINdiqnDzDdWwS@login"
+      } ],
       "additionalInfo" : {
         "description" : "",
         "contentType" : "JSON",

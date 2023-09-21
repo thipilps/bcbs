@@ -13,10 +13,10 @@
       <types1:CreatedBy>tnsilva@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2023-09-12T17:46:36Z</types1:CreationDate>
       <types1:ModifiedBy>tnsilva@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2023-09-14T04:23:42Z</types1:ModificationDate>
+      <types1:ModificationDate>2023-09-20T01:29:54Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>tnsilva@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2023-09-14T04:24:37Z</types1:PublicationDate>
+      <types1:PublicationDate>2023-09-20T03:34:54Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/tf.Taskflow_ActivityLog/Taskflow_ActivityLog.tf.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -48,10 +48,17 @@
                      <option name="referenceTo">$po:mt-IDMC-ActivityLog</option>
                   </options>
                </field>
-               <field description="" name="Taskflow_Login" type="reference">
+               <field description="" name="Login" type="reference">
                   <options>
                      <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
                      <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description="" name="CleanUp Tables" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:mt-IDMC-CleanUp-Tables</option>
+                     <option name="failOnNotRun">true</option>
                      <option name="failOnFault">true</option>
                   </options>
                </field>
@@ -69,7 +76,7 @@
                   <flow id="lminw4a8">
                      <eventContainer id="lminw4d1">
                         <subflow id="lminw4cx">
-                           <title>Taskflow_Login</title>
+                           <title>Login</title>
                            <subflowGUID>5RlEWISSL2KbsAqQDfMFUH</subflowGUID>
                            <subflowPath>Taskflow_Login</subflowPath>
                            <runForEach>false</runForEach>
@@ -109,9 +116,95 @@
                         </function>
                      </condition>
                   </link>
-                  <link id="lminw4ai" targetId="lmglsttk"/>
                   <link id="lminw4aa" targetId="lminw4ab" type="containerLink"/>
+                  <link id="lmr2dt07" targetId="lmr2dt1d"/>
                </container>
+               <eventContainer id="lmr2dt1d">
+                  <service id="lmr2dt06">
+                     <title>CleanUp Tables</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_IDMC_CleanUp_Tables</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">3evP9UqRhQIhK54szmR1qn</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-IDMC-CleanUp-Tables">temp.CleanUp Tables</operation>
+                           <operation source="constant"
+                                      to="mt-IDMC-CleanUp-Tables/inout[1]/CleanUp_ActivityLog">Y</operation>
+                           <operation source="constant"
+                                      to="mt-IDMC-CleanUp-Tables/inout[1]/CleanUp_ActivityLog_Entries">Y</operation>
+                           <operation source="constant"
+                                      to="mt-IDMC-CleanUp-Tables/inout[1]/CleanUp_ActivityLog_TransformationEntries">Y</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.CleanUp Tables/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.CleanUp Tables/output/FirstErrorCode">First Error Code</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Environment">Environment</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/CleanUp_ActivityLog">CleanUp_ActivityLog</operation>
+                        <operation source="field"
+                                   to="temp.CleanUp Tables/inout/CleanUp_ActivityLog_Entries">CleanUp_ActivityLog_Entries</operation>
+                        <operation source="field"
+                                   to="temp.CleanUp Tables/inout/CleanUp_ActivityLog_TransformationEntries">CleanUp_ActivityLog_TransformationEntries</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/CleanUp_IPUUsage">CleanUp_IPUUsage</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Truncate_CommitHistory">Truncate_CommitHistory</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Truncate_CommitChanges">Truncate_CommitChanges</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Truncate_CommitPath">Truncate_CommitPath</operation>
+                        <operation source="field"
+                                   to="temp.CleanUp Tables/inout/Truncate_ExportMeteringData">Truncate_ExportMeteringData</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Truncate_Groups">Truncate_Groups</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Truncate_GroupsUsers">Truncate_GroupsUsers</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Truncate_GroupsRoles">Truncate_GroupsRoles</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Truncate_Roles">Truncate_Roles</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Truncate_Users">Truncate_Users</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Truncate_UsersRoles">Truncate_UsersRoles</operation>
+                        <operation source="field" to="temp.CleanUp Tables/inout/Truncate_Connection">Truncate_Connection</operation>
+                     </serviceOutput>
+                  </service>
+                  <flow id="lmr2dt1f">
+                     <link id="lmr2dt1g" targetId="lmr2dt1d" type="containerLink"/>
+                  </flow>
+                  <flow id="lmr2dt1i">
+                     <throw id="lmr2dt1u">
+                        <title>Throw CleanUp Tables</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">{$temp.CleanUpTables[1]/fault[1]/code}</parameter>
+                           <parameter name="detail" source="constant" updatable="true">{$temp.CleanUpTables[1]/fault[1]/detail[1]/errOutputDetail[1]/Error_Message}</parameter>
+                           <parameter name="reason" source="constant" updatable="true"/>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lmr2dt1e" targetId="lmr2dt1f" type="containerLink"/>
+                  <link id="lmr2dt08" targetId="lmglsttk"/>
+                  <events>
+                     <catch faultField="temp.CleanUp Tables/fault"
+                            id="lmr27y64"
+                            interrupting="true"
+                            name="error">
+                        <link id="lmr2dt1h" targetId="lmr2dt1i" type="containerLink"/>
+                     </catch>
+                     <catch faultField="temp.CleanUp Tables/fault"
+                            id="lmr27y65"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
                <eventContainer id="lmglsttk">
                   <service id="lmglstsu">
                      <title>Activity Log</title>
@@ -217,12 +310,43 @@
                   </detail>
                </processObject>
                <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
-                              displayName="InternalInfaSubTaskflowField"
+                              displayName="mt-IDMC-CleanUp-Tables"
                               isByCopy="true"
-                              name="InternalInfaSubTaskflowField">
-                  <description>This process object represents a subtaskflow type reference field.</description>
+                              name="mt-IDMC-CleanUp-Tables">
+                  <description/>
                   <tags/>
-                  <detail/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="InOut Parameters"
+                            name="inout"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Max Wait (Seconds)"
+                            name="Max_Wait"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
                </processObject>
             </dependencies>
          </taskflow>
@@ -230,5 +354,5 @@
       <types1:GUID>11uID35pqjqiy1OdsEx78Q</types1:GUID>
       <types1:DisplayName>Taskflow_ActivityLog</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2023-09-14T15:22:08.958Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2023-09-21T02:48:46.095Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
